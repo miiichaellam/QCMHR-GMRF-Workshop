@@ -1,0 +1,279 @@
+---
+title: "QCMHR-GMRF Workshop Results"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+	echo = F,
+	error = F,
+	fig.align = "center",
+	fig.width = 8,
+	warning = FALSE
+)
+
+library(tidyverse)
+library(janitor)
+library(reactable)
+library(htmltools)
+library(readxl)
+library(shiny)
+library(fontawesome)
+library(gt)
+library(flextable)
+rm(list=ls())
+
+
+## Video topic
+target_aud = readxl::read_xlsx(path = "/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_data.xlsx",sheet = "Activity 1") %>% 
+  filter(question_category %in% "Target audience")
+
+## Learning Objective
+learno = readxl::read_xlsx(path = "/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_data.xlsx",sheet = "Activity 1") %>% 
+  filter(question_category %in% "Learning Objective")
+
+## Video topic
+vtopic = readxl::read_xlsx(path = "/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_data.xlsx",sheet = "Video topic") 
+
+## Package Style
+pstyle = readxl::read_xlsx(path = "/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_data.xlsx",sheet = "Package style") 
+
+## Evaluation
+eval = read_csv("/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_evaluation.csv") %>% 
+  filter(id != 9)  # Remove ed's response
+  
+
+## Personal functions
+### THeme
+ml_theme = function() {theme_bw() %+%
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        # Title & subtitle
+      plot.title = element_text(face = "bold"),
+      # Caption
+      plot.caption = element_text(size = 10, hjust = 1, face = "italic", colour = "grey70",
+                                  margin = margin(t = 0.1, unit = "cm")),
+      # X - axis
+      axis.title.x = element_text(margin = margin(t = .5,unit = "cm"),
+                                  color = "grey50",size = 12),
+      axis.text.x = element_text(size = 12),
+      axis.text.y = element_text(size = 12),
+      # Y - axis
+      axis.title.y = element_text(margin = margin(r = .5, unit = "cm"), color = "grey50",angle = 90,
+                                  size = 12))
+}
+
+### Function to create table
+process_tbl = function(type_string){
+  process_df |> 
+  distinct(Comments,.keep_all = T) |> 
+  filter(type %in% type_string) |> 
+  select(Comments) |> 
+  knitr::kable(table.attr = "style='width:100%'")
+}
+```
+
+### Response rate
+```{r fig.align="left"}
+rr_tbl = tibble(activity = c("One","Three","Evaluaton"),
+       survey_response = c(n_distinct(target_aud$id),n_distinct(pstyle$id),n_distinct(eval$id)),
+       all_attendance = 22) %>% 
+  group_by(activity) %>% 
+  mutate(perc = survey_response/all_attendance,
+         stat = paste0(scales::percent(perc,accuracy = .1)," (","n = ",survey_response,")")) %>% 
+  ungroup() |> 
+  select(activity,stat) |> 
+  gt() |> 
+  cols_label("activity" = md("**Activity Type**"),
+              "stat" = md("**Response % (n)**")
+             )
+
+rr_tbl
+```
+
+
+# Activity 1 
+## Target Audience
+```{r fig.width=11, fig.asp= 0.5}
+target_plot = target_aud %>% 
+  mutate(qst_plot = sub(pattern = ".*is/are: - ",replacement = "",x = question_detail)) %>% 
+  group_by(qst_plot) %>% 
+  count(response) %>% 
+  mutate(perc = n/n_distinct(target_aud$id)) %>% 
+  filter(response %in% "Yes") %>% 
+  ggplot(aes(x = fct_reorder(qst_plot,perc), y = perc,fill = qst_plot)) +
+  geom_col(alpha = .8,show.legend = F) +
+  geom_text(aes(label = scales::percent(perc,accuracy = .1)),hjust = -.2) +
+  coord_flip() +
+  scale_fill_viridis_d() +
+  scale_y_continuous(labels = scales::percent,limits = c(0,1)) +
+  labs(x = "Target Audience", y = "% Selected 'Yes' as response",
+       title = "The most appropriate target audience(s) for this initiative is/are") +
+  ml_theme()
+
+target_plot
+```
+
+## Learning Objective
+```{r fig.width=11,fig.asp=0.5}
+learning_plot = learno %>% 
+  mutate(qst_plot = sub(pattern = ".*be: - ",replacement = "",x = question_detail)) %>% 
+  group_by(qst_plot) %>% 
+  count(response) %>% 
+  mutate(perc = n/n_distinct(target_aud$id)) %>% 
+  filter(response %in% "Yes") %>% 
+  ggplot(aes(x = fct_reorder(qst_plot,perc), y = perc)) +
+  geom_col(aes(fill = qst_plot),alpha = .8,show.legend = F) +
+  geom_label(aes(label = scales::percent(perc,accuracy = .1)),hjust = 1.1) +
+  coord_flip() +
+  scale_fill_viridis_d() +
+  scale_y_continuous(labels = scales::percent,limits = c(0,1)) +
+  labs(x = "Target Audience", y = "% Selected 'Yes' as response") +
+  ml_theme()
+
+learning_plot
+```
+
+# Activity 3 
+## Video topic
+```{r fig.width=13, fig.asp=0.5, out.width="100%"}
+vtopic_plot = vtopic %>% 
+  count(video_topic) %>% 
+  mutate(perc = n/n_distinct(vtopic$id)) %>% 
+  ggplot(aes(x = fct_reorder(video_topic,perc), y = perc,fill = video_topic)) +
+  geom_text(aes(label = scales::percent(perc,accuracy = .1)),hjust = -.1) +
+  geom_col(show.legend = F) +
+  scale_fill_viridis_d() +
+  scale_y_continuous(labels = scales::percent,limits = c(0,.8)) +
+  coord_flip() +
+  labs(x = "Video topics",y = "% of respondents selecting video topic",
+       title = "The topics of videos we should produce are:") +
+  ml_theme()
+
+vtopic_plot
+```
+
+## Package style
+```{r fig.asp= 0.8,out.width="70%"}
+style_plot = pstyle %>% 
+  count(package_style) %>% 
+  add_row(package_style = c("Standalone resources","Other"),
+          n = 0) %>% 
+  mutate(perc = n/n_distinct(pstyle$id)) %>% 
+  ggplot(aes(x = fct_reorder(package_style,perc), y = perc,fill = package_style)) +
+  geom_text(aes(label = scales::percent(perc,accuracy = .1)),hjust = -.1) +
+  geom_col(show.legend = F) +
+  scale_fill_viridis_d() +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent,limits = c(0,.8)) +
+  labs(x = "Style of package", y = "% of respondents",
+       title = "The style of the learning package should be:") +
+  ml_theme()
+
+style_plot
+```
+
+# Evaluation 
+## Rating the effectiveness of the workshop
+```{r fig.width=12,fig.asp = 0.8}
+evalrting_plot = eval %>% 
+  filter(col_name %in% paste("q",c(1,2,3,7),sep = "")) %>% 
+  group_by(col_description) %>% 
+  count(col_response) %>% 
+  ungroup() %>% 
+  add_row(col_description = c("I was able to contribute effectively to the workshop",
+                              "The process was effective in generating draft learning objectives for the content of the education package",
+                              "The process was effective in generating draft learning objectives for the content of the education package",
+                              "The process was effective in generating draft video content ideas for the education package",
+                              "The process was effective in generating draft video content ideas for the education package",
+                              "This workshop was a valuable use of my skills"),
+          col_response = c("Somewhat disagree",
+                           "Strongly disagree","Somewhat disagree",
+                           "Somewhat disagree","Neither agree nor disagree",
+                           "Somewhat disagree"),
+          n = 0) %>% 
+  group_by(col_description) %>% 
+  mutate(perc = n/n_distinct(eval$id),
+         new_fct = factor(col_response,level = c("Strongly disagree","Somewhat disagree",
+                                                "Neither agree nor disagree","Somewhat agree","Strongly agree"))
+         )%>% 
+  ggplot(aes(x = new_fct, y = perc,fill = new_fct)) +
+  geom_col(show.legend = F) +
+  geom_text(aes(label = scales::percent(perc,accuracy = .1)),vjust = -.2) +
+  facet_wrap(~col_description,nrow = 4,scales = "free_y") +
+  scale_y_continuous(labels = scales::percent,limits = c(0,.9)) +
+  scale_fill_manual(values = c("#c43c4e","#e55c30",
+                               "#56c667",
+                               "#33638d","#404688")) +
+  labs(x = NULL, y = "% of respondents") +
+  theme_bw() %+%
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        # Title & subtitle
+      plot.title = element_text(face = "bold"),
+      plot.subtitle = element_text(size = 15, hjust = 0, vjust = 0.5, colour = "grey45",
+                                   margin = margin(b = 0.2, unit = "cm")),
+      # Caption
+      plot.caption = element_text(size = 10, hjust = 1, face = "italic", colour = "grey70",
+                                  margin = margin(t = 0.1, unit = "cm")),
+      # X - axis
+      axis.title.x = element_text(margin = margin(t = .5,unit = "cm"),
+                                  color = "grey50",size = 12),
+      axis.text.x = element_text(size = 12),
+      axis.text.y = element_text(size = 12),
+      # Labels
+      strip.text = element_text(face = "bold",size = 12),
+      # Y - axis
+      axis.title.y = element_text(margin = margin(r = .5, unit = "cm"), color = "grey50",angle = 90,
+                                  size = 12))
+
+evalrting_plot
+```
+
+## Questions about process
+### Best 
+```{r}
+# Create dataframe
+process_df = eval %>% 
+  filter(col_name %in% paste("q",c(8,9,10),sep = "")) %>% 
+  mutate(type = case_when(str_detect(col_description,"best") ~ "Best",
+                          str_detect(col_description,"worst") ~ "Worst",
+                          str_detect(col_description,"change") ~ "Change")) %>% 
+  select(type,col_response) |> 
+  rename("Comments" = col_response)
+
+## Function to create individual tables
+best_proc = process_tbl("Best")
+## Print table
+best_proc
+```
+
+### Worst 
+```{r}
+worst_proc = process_tbl("Worst") 
+
+worst_proc
+```
+
+### Changes
+```{r}
+change_proc = process_tbl("Change")
+change_proc
+```
+
+
+## Other thoughts and comments 
+```{r}
+eval_tbl = eval %>% 
+    filter(col_name %in% "q11") %>% 
+    select(col_response) |> 
+  distinct() |> 
+  rename("Comments" = col_response) |> 
+  knitr::kable(table.attr = "style='width:100%'")
+
+eval_tbl
+```
+
