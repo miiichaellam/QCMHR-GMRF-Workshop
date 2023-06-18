@@ -1,0 +1,482 @@
+---
+title: "VIDEO RESOURCES FOR FIRST RESPONDERS WHO ENGAGE WITH VETERANS’ EXPERIENCING SUICIDE CRISIS:"
+subtitle: "Outcomes of a co-design workshop and recommendations for resource development"
+format:
+  html:
+    page-layout: full 
+    embed-resources: true
+    toc: true
+    toc-location: left
+    number-sections: true
+    theme: minty
+editor_options:
+  chunk_output_type: console
+---
+
+<a href="https://github.com/miiichaellam/QCMHR-GMRF-Workshop/raw/main/QCMHR-GMRF-report_wordnew.docx" class="btn btn-primary" download="QCMHR-GRMF-report.pdf"><i class="fa fa-download"></i> Download report</a>
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+	echo = F,
+	error = F,
+	warning = FALSE
+)
+
+library(tidyverse)
+library(janitor)
+library(reactable)
+library(reactablefmtr)
+library(htmltools)
+library(readxl)
+library(shiny)
+library(fontawesome)
+library(RColorBrewer)
+rm(list=ls())
+
+
+## Video topic
+target_aud = readxl::read_xlsx(path = "/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_data.xlsx",sheet = "Activity 1") %>% 
+  filter(question_category %in% "Target audience")
+
+## Learning Objective
+learno = readxl::read_xlsx(path = "/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_data.xlsx",sheet = "Activity 1") %>% 
+  filter(question_category %in% "Learning Objective")
+
+## Video topic
+vtopic = readxl::read_xlsx(path = "/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_data.xlsx",sheet = "Video topic") 
+
+## Package Style
+pstyle = readxl::read_xlsx(path = "/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_data.xlsx",sheet = "Package style") 
+
+## Evaluation
+eval = read_csv("/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data/clean_evaluation.csv") %>% 
+  filter(id != 9)  # Remove ed's response
+  
+
+
+  
+## Personal them
+```
+
+# Executive Summary
+
+Text to go here
+
+# Summary of Recommendations
+
+Text to go here
+
+# Background
+
+Suicide in veteran communities is a high profile issue of concern in veteran health. The need to improve responses to veterans who experience suicidality, and their families, is being highlighted by the current Royal Commission into Defence and Veteran Suicides.
+
+Suicide crises that result in a call to emergency services (police, paramedics or emergency mental health workers), represent a critical 'touchpoint' between individuals in crisis and health and social care services (WHO, 2009).
+
+In spite of this, there is scant evidence or interventions to inform optimal first responses, including first responses tailored to the specific needs of specific populations, including defence and veteran populations.
+
+# Project aims
+
+The present project aims to create and evaluate lived experience and evidence-informed video resources, based on qualitative research to be undertaken with veterans who have experienced suicidality, their families, and police and ambulance responders to respond to individuals in crisis. These resources will be available for use by all first responders, and other organisations who provide crisis responses to individuals who are currently serving or veterans.
+
+# Approach
+
+The project is envisaged to comprise three phases: 1. Qualitative interviews and focus groups 2. Video development 3. Evaluation This document outlines the outcomes of phase 2 of this project, pertaining to a one-day co-design workshop to develop video resources and training materials, including process, outcomes, evaluation, and recommendations.
+
+# Workshop
+
+A one-day co-design workshop was hosted at the United Services Club, in Spring Hill, Brisbane, Queensland on 20 March, 2023. This workshop was attended by 27 delegates spanning:
+
+-   Queensland Centre for Mental Health Research
+
+-   Gallipoli Medical Research Foundation
+
+-   Queensland Health
+
+-   Queensland Police Service
+
+-   Queensland Ambulance Service
+
+-   Australian Defence Force
+
+The day was defined by four key components: context and background; interactive activities; filming; and evaluation
+
+## Context and background
+
+Three presentations were delivered to provide context and background to the purpose of the workshop
+
+### Presentation 1
+
+**Suicide crisis, first responders, current and ex ADF members: current clinical services and pathways -- A/Prof Ed Heffernan**
+
+In this presentation, A/Prof Heffernan provided an overview of the context to the videos project, in terms of rising pressures on police and paramedics to respond to individuals in crisis, and the existing service context in Queensland.
+
+A/Prof Heffernan also noted the definition of veteran to be used for this project, as follows: "people who have any experience in the ADF including permanent, reserve, and former (ex-serving) personnel". 
+
+### Presentation 2
+
+**The Partners in Prevention videos project -- background, outcomes and learnings -- Dr Carla Meurk**
+
+In this presentation, Dr Meurk overviewed the initial Partners in Prevention videos project, and discussed key learnings arising, including highlighting key considerations for filming, such as:
+
+-   Being mindful of length, in general viewership drops substantially after 6 minutes length.
+
+-   Consideration of what/when videos (versus text or face-to-face delivery) are the best approach e.g., the ability of videos to effectively convey emotion and connection to material through emotional connection.
+
+-   Focus on one specific or topic or question per video
+
+-   Video resources can be good where visual aids, diagrams, or animations can be used to convey information easily and/or in a more appropriate manner than having faces on camera.
+
+The presentation ended with three key questions:
+
+1.  What are our objectives for these resources?
+
+2.  Who are they for?
+
+3.  What is the ONE thing you want the audience to come away with for each video?
+
+A schema of the proposed video production process, was presented, as follows:
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+| 1.  Pre-production                                                                                                                                                                                            | 2.  Production                                                                          | 3.  Production/post-production                                                                                  |
++===============================================================================================================================================================================================================+=========================================================================================+=================================================================================================================+
+| -   Workshop -- gathering ideas and provisional consensus                                                                                                                                                     | -   With endorsement from stakeholders, the team will move onto production. Comprising: | -   A rough cut / first draft of each project will be prepared and presented back to stakeholders for feedback. |
+|                                                                                                                                                                                                               |                                                                                         |                                                                                                                 |
+| -   Project investigators and multimedia team prepare a proposal for the format/type for each video/topic.                                                                                                    |     -   Film shoots                                                                     | -   Another round of post-production will take place to resolve feedback.                                       |
+|                                                                                                                                                                                                               |                                                                                         |                                                                                                                 |
+| -   Once approved by stakeholders, project investigators and multimedia team will prepare pre-production materials as necessary for further approval -- for e.g. storyboards, list of interview participants. |     -   Audio recording                                                                 | -   Following implementation of resources, evaluation will take place.                                          |
+|                                                                                                                                                                                                               |                                                                                         |                                                                                                                 |
+|                                                                                                                                                                                                               |     -   Title / animation production                                                    |                                                                                                                 |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+
+### Presentation 3
+
+**Training needs and gaps: Preliminary findings from qualitative interviews and focus groups with individuals with lived experience, families, and first responders -- Dr Kerri-Ann Woodbury and Dr Emina Prguda**
+
+TBC from Kerri-Ann and Emina
+
+### Interactive activities
+
+Following presentations, workshop participants took part in four focussed interactive activities, with the purpose of progressing towards developing provisional consensus on the following matters:
+
+1.  Who is/are the target audience(s) for these video resources; and
+
+2.  What training needs will the video resources seek to meet (i.e., what are the videos aims and specific learning objectives)?
+
+3.  What are the number, content, and broad stylistic features, including approximate length, of resources to be produced?
+
+There were two parts to the activities: (1) brainstorming at tables, and (2) a short summative survey based on each table's consensus.
+
+### Filming
+
+In addition to the interactive activities, a film crew was on site for the day to obtain responses from meeting attendees for potential use in video resources. Respondents were invited to respond to the following questions:
+
+-   When you are talking to veterans, what specific communication skills do you use to engage them?
+
+-   What, if anything, is it that's unique about ~~a~~ veterans' in crisis?
+
+-   What's one implementable suggestion you could give to a 1^st^ responder on how to respond to veterans' in crisis?
+
+### Evaluation
+
+At the end of the day, there was a preliminary discussion regarding an evaluation protocol for the project. A short survey from the day was circulated for participant feedback.
+
+## Outcomes and provisional consensus
+
+[Response rate]{.underline}
+
+```{r}
+response_tbl = tibble(activity = c("One","Three","Evaluaton"),
+       survey_response = c(n_distinct(target_aud$id),n_distinct(pstyle$id),n_distinct(eval$id)),
+       all_attendance = 22) %>% 
+  group_by(activity) %>% 
+  mutate(perc = survey_response/all_attendance,
+         stat = paste0(scales::percent(perc,accuracy = .1)," (","n = ",survey_response,")")) %>% 
+  select(activity,stat) %>% 
+  reactable(.,
+            highlight = T,bordered = T,pageSizeOptions = c(10,15,20),wrap = T,resizable = T,
+            showPageSizeOptions = T,paginationType = "jump",
+            columns = list(
+              activity = colDef(name = "Activity"),
+              stat = colDef(name = "Response % (n)")))
+
+response_tbl
+```
+
+### Target Audience + Learning Objective for video resources
+
+::: panel-tabset
+#### Target audience
+
+```{r}
+target_tbl = target_aud %>% 
+  mutate(qst_plot = sub(pattern = ".*is/are: - ",replacement = "",x = question_detail)) %>% 
+  group_by(qst_plot) %>% 
+  count(response) %>% 
+  mutate(perc = round(n/n_distinct(target_aud$id),digits = 2)) %>% 
+  filter(response %in% "Yes") %>% 
+  select(-response) 
+  
+  
+reactable(target_tbl,
+          resizable = T,highlight = T,showSortable = T,showSortIcon = T,bordered = T,
+            columns = list(qst_plot = colDef(name = "Target Audiences"),
+                           n = colDef(name = "Number of respodents"),
+                           perc = colDef(name = "% of respondents",
+                                         cell = data_bars(target_tbl,number_fmt = scales::percent,round_edges = T,
+                                                          fill_color = "#CDAA7D")
+                           )))
+
+```
+
+#### Learning objectives
+
+```{r }
+learning_tbl = learno %>% 
+  mutate(qst_plot = sub(pattern = ".*be: - ",replacement = "",x = question_detail)) %>% 
+  group_by(qst_plot) %>% 
+  count(response) %>% 
+  mutate(perc = round(n/n_distinct(target_aud$id),digits = 2)) %>% 
+  filter(response %in% "Yes") %>% 
+  select(-response)
+  
+
+reactable(learning_tbl,resizable = T,highlight = T,showSortable = T,showSortIcon = T,bordered = T,
+            columns = list(qst_plot = colDef(name = "Learning Objectives"),
+                           n = colDef(name = "Number of respodents"),
+                           perc = colDef(name = "% of respondents",
+                                         cell = data_bars(learning_tbl,
+                                                          number_fmt = scales::percent,
+                                                          fill_color = "#7AC5CD",
+                                                          round_edges = T))
+                           ))
+
+```
+:::
+
+### Video topic + Package style for videos
+
+::: panel-tabset
+#### Topics of videos
+
+```{r}
+vtopic_tbl = vtopic %>% 
+  count(video_topic) %>% 
+  mutate(perc = round(n/n_distinct(vtopic$id),digits = 2))
+
+reactable(vtopic_tbl,resizable = T,highlight = T,showSortable = T,showSortIcon = T,bordered = T,
+            columns = list(video_topic = colDef(name = "Video topics"),
+                           n = colDef(name = "Number of respodents"),
+                           perc = colDef(name = "% of respondents",
+                                         cell = data_bars(vtopic_tbl,
+                                                          number_fmt = scales::percent,
+                                                          min_value = -0.08,
+                                                          fill_color = "#CD5555",
+                                                          round_edges = T))
+                           ))
+
+
+
+```
+
+#### Learning package style
+
+```{r}
+style_tbl = pstyle %>% 
+  count(package_style) %>% 
+  add_row(package_style = c("Standalone resources","Other"),
+          n = 0) %>% 
+  mutate(perc = round(n/n_distinct(pstyle$id),digits = 2)) 
+
+
+reactable(style_tbl,resizable = T,highlight = T,showSortable = T,showSortIcon = T,bordered = T,
+            columns = list(package_style = colDef(name = "Video package styles"),
+                           n = colDef(name = "Number of respodents"),
+                           perc = colDef(name = "% of respondents",
+                                         cell = data_bars(style_tbl,
+                                                          number_fmt = scales::percent,min_value = -0.08,
+                                                          fill_color = "#7EC0EE",
+                                                          round_edges = T))
+                           ))
+```
+:::
+
+### Synthesis of Outcomes
+
+As a means to refine the scope, answers regarding target audience, learning objectives and video topics were synthesized to identify areas of consistency and misalignment.
+
+[Target audience]{.underline}
+
+With regards to target audience, the vast majority of attendees endorsed the idea that the target audience for training should be QPS front line/general duties officers and QAS front line staff across the whole of organisation. The needs of these target audiences appeared to align with consensus around learning objectives and video topics. The next most endorsed category were QAS Emergency Medical Dispatchers, however, the prescriptive nature of this group\'s role, and according needs, did not appear to align with the learning objectives or topics as relevant to other groups.
+
+Queensland Health co-responders, MH call attendants, Acute Care Teams and Mental Health Intervention Coordinators, were considered to have similar needs and therefore could be grouped together as the equivalent Queensland Health \'frontline staff\'.
+
+Other organisations, such as ADF and QFS, maybe secondary beneficiaries of resources but, based on previous learnings, expanding the target audience across too many organisations risks resources not effectively targeting any.
+
+Consequently, a provisional recommendation for target audience was identified as follows:
+
+-   QPS front line/general duties officers
+
+-   QAS front line staff across the organisation
+
+-   Qld Health co-responders, MH call attendants, Acute Care Teams and Mental Health Intervention Coordinators
+
+[Learning objectives and video (resource) topics]{.underline}
+
+Provisional consensus was achieved regarding seven learning objectives. These were assessed in relation to the ten video topics identified, which also achieved high levels of consensus.
+
+Mapping learning objectives to topics suggested, identified areas of alignment which allowed for further refinement. The table below identifies the seven learning objectives identified, and maps them to a synthesized and refined list of video topics. In this process, one learning objective was excluded, due to its not having an alignment with video topics identified. As can be seen, learning objectives map to parts of multiple video topics.
+
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| Learning objectives                                                                                              | Video (resource) topics                                                                              |
++==================================================================================================================+======================================================================================================+
+| -   Person centred approaches to suicide crisis situations, responding to people on worst day of their life      | -   Understanding the veteran\'s experience in crisis                                                |
+|                                                                                                                  |                                                                                                      |
+|                                                                                                                  | -   Working with veterans -- trauma informed responses                                               |
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| -   Building connection, rapport and trust with veterans                                                         | -   Communication + rapport building                                                                 |
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| -   Demystifying veterans\' crisis and alleviating responders bias and fear                                      | -   Understanding the veteran\'s experience in crisis                                                |
+|                                                                                                                  |                                                                                                      |
+|                                                                                                                  | -   Working with veterans -- trauma informed responses                                               |
+|                                                                                                                  |                                                                                                      |
+|                                                                                                                  | -   Self-management, self-care, and when to seek back-up or support (on-scene, and in the aftermath) |
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| -   Understanding the military experience and language; understanding what it means to identity/loss of identity | -   Working with veterans -- trauma informed responses                                               |
+|                                                                                                                  |                                                                                                      |
+|                                                                                                                  | -   Understanding the veteran\'s experience in crisis                                                |
+|                                                                                                                  |                                                                                                      |
+|                                                                                                                  | -   Communication + rapport building                                                                 |
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| -   Referral pathways and support services                                                                       | -   Education module on resources available                                                          |
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| -   Epidemiology of suicidality, normalising and de-stigmatising suicide crisis                                  |                                                                                                      |
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+| -   Promoting help seeking behaviours post crisis                                                                | -   Education module on resources available                                                          |
++------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+
+#### Recommendation for resources
+
+Following the mapping above, the following resources have been identified for production:
+
+-   Understanding the veteran\'s experience in crisis (lived experience video)
+
+-   Working with veterans -- trauma informed responses (clinician/expert advice)
+
+-   Communication + rapport building (skills, potentially by QPS)
+
+-   Self-management, self-care, and when to seek support (Responder perspectives)
+
+-   Referral pathways and promoting help seeking behaviours (text resources)
+
+## Proposed Consultation and Timeline
+
+Text to go here
+
+# Appendix - Workshop Evaluation
+
+::: panel-tabset
+## Rating the effectiveness of the workshop
+
+```{r fig.width=12,fig.asp = 0.8}
+evalrting_tbl = eval %>% 
+  filter(col_name %in% paste("q",c(1,2,3,7),sep = "")) %>% 
+  group_by(col_description) %>% 
+  count(col_response) %>% 
+  ungroup() %>% 
+  add_row(col_description = c("I was able to contribute effectively to the workshop",
+                              "The process was effective in generating draft learning objectives for the content of the education package",
+                              "The process was effective in generating draft learning objectives for the content of the education package",
+                              "The process was effective in generating draft video content ideas for the education package",
+                              "The process was effective in generating draft video content ideas for the education package",
+                              "This workshop was a valuable use of my skills"),
+          col_response = c("Somewhat disagree",
+                           "Strongly disagree","Somewhat disagree",
+                           "Somewhat disagree","Neither agree nor disagree",
+                           "Somewhat disagree"),
+          n = 0) %>% 
+  group_by(col_description) %>% 
+  mutate(perc = n/n_distinct(eval$id))|> 
+  ungroup() |> 
+  select(col_description,col_response,perc) |> 
+  pivot_wider(names_from = col_response,values_from = perc) |> 
+  select(col_description,"Strongly disagree","Somewhat disagree",
+                                                "Neither agree nor disagree","Somewhat agree","Strongly agree")
+  
+  
+  
+  
+reactable(evalrting_tbl,
+          resizable = T,highlight = T,showSortable = T,showSortIcon = T,bordered = T,
+            columns = list(col_description = colDef(name = "Question"),
+                           `Strongly disagree` = colDef(name = "Strongly disagree %",
+                                                        cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
+                                                                         min_value = -0.02,round_edges = T,
+                                                                         fill_color = "#EE3B3B")),
+                           `Somewhat disagree`= colDef(name = "Somewhat disagree %",
+                                                       cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
+                                                                        round_edges = T,
+                                                                        fill_color = "#EEB4B4")),
+                           `Neither agree nor disagree`= colDef(name = "Neither agree nor disagree %",
+                                                                cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
+                                                                                 round_edges = T,
+                                                                                 min_value = -0.02,
+                                                                                 fill_color = "#F5DEB3")),
+                           `Somewhat agree`= colDef(name = "Somewhat agree %",
+                                                    cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
+                                                                     round_edges = T,
+                                                                     fill_color = "#00BFFF")),
+                           `Strongly agree`= colDef(name = "Strongly agree %",
+                                                    cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
+                                                                     round_edges = T,
+                                                                     fill_color = "#00688B"))))
+```
+
+## Questions about process
+
+```{r}
+process_tbl = eval %>% 
+  filter(col_name %in% paste("q",c(8,9,10),sep = "")) %>% 
+  mutate(type = case_when(str_detect(col_description,"best") ~ "Best",
+                          str_detect(col_description,"worst") ~ "Worst",
+                          str_detect(col_description,"change") ~ "Change")) %>% 
+  select(type,col_response) %>% 
+  reactable(.,filterable = T,
+            highlight = T,bordered = T,pageSizeOptions = c(10,15,20),
+            showPageSizeOptions = T,paginationType = "jump",
+            columns = list(
+              type = colDef(name = "Comment type about process",
+                filterInput = function(values, name) {
+        tags$select(
+          # Set to undefined to clear the filter
+          onchange = sprintf("Reactable.setFilter('cars-select', '%s', event.target.value || undefined)", name),
+          # "All" has an empty value to clear the filter, and is the default option
+          tags$option(value = "", "All"),
+          lapply(unique(values), tags$option),
+          "aria-label" = sprintf("Filter %s", name),
+          style = "width: 100%; height: 28px;"
+        )
+      }
+    ),
+    col_response = colDef(name = "Comments",filterable = F)
+              ),
+    elementId = "cars-select"
+            )
+
+process_tbl
+```
+
+## Other thoughts and comments
+
+```{r}
+cmt_tbl = eval %>% 
+  filter(col_name %in% "q11") %>% 
+  select(col_response) %>% 
+  reactable(.,
+            highlight = T,bordered = T,pageSizeOptions = c(10,15,20),wrap = T,resizable = T,
+            showPageSizeOptions = T,paginationType = "jump",
+            columns = list(
+              col_response = colDef(name = "Comments")))
+
+cmt_tbl
+```
+:::
