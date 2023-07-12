@@ -1,5 +1,6 @@
 ---
 title: "VIDEO RESOURCES FOR FIRST RESPONDERS WHO ENGAGE WITH VETERANS’ EXPERIENCING SUICIDE CRISIS:"
+title-block-banner: true
 subtitle: "Outcomes of a co-design workshop and recommendations for resource development"
 format:
   html:
@@ -8,12 +9,24 @@ format:
     toc: true
     toc-location: left
     number-sections: true
-    theme: minty
+    theme: yeti
 editor_options:
   chunk_output_type: console
 ---
 
-<a href="https://github.com/miiichaellam/QCMHR-GMRF-Workshop/raw/main/QCMHR-GMRF-report_wordnew.docx" class="btn btn-primary" download="QCMHR-GRMF-report.pdf"><i class="fa fa-download"></i> Download report</a>
+```{=html}
+<style>
+  h1.title {
+    color: white;
+  }
+</style>
+```
+![](joint_logo.png){fig-align="left" width="107.5cm"}
+
+<a href="https://github.com/miiichaellam/QCMHR-GMRF-Workshop/raw/main/QCMHR-GMRF-report_word.docx" class="btn btn-primary" download="QCMHR-GRMF-report.pdf" style="width: 300px;"><i class="fa fa-download"></i> <strong style="font-weight: bold;">Download report</strong></a>
+
+
+
 ```{r setup, include=FALSE}
 
 knitr::opts_chunk$set(
@@ -28,6 +41,7 @@ library(reactable)
 library(reactablefmtr)
 library(htmltools)
 library(readxl)
+library(htmlwidgets)
 library(shiny)
 library(fontawesome)
 library(RColorBrewer)
@@ -60,27 +74,75 @@ eval = read_csv("/Users/michaellam/Desktop/R_DATA_FILES/QCMHR-GMRF-Workshop/data
 
 # Executive Summary
 
-Text to go here
+-   A one-day co-design workshop was hosted at the United Services Club, in Spring Hill, Brisbane, Queensland on 20 March, 2023. This workshop was attended by 27 delegates spanning several organisations.
+
+-   The workshop contributes to an overall project aim to create and evaluate lived experience and evidence-informed video resources to assist first responders in their responses to veterans who experience suicide crisis, based on qualitative research undertaken with veterans who have experienced suicidality, their families, police and ambulance responders who respond to individuals in crisis, and input from expert stakeholders.
+
+-   These resources will be available for use by all first responders, and other organisations who provide crisis responses to individuals who are currently serving or veterans.
+
+-   The purpose of the workshop was to develop provisional consensus as to the target audience, learning objectives, and topics of focus of video resources and training materials to be developed, based on research undertaken and stakeholder views.
+
+-   The day was defined by four key components: context and background; interactive activities; filming; and evaluation.
+
+-   Findings from the day have been synthesized in this report, to produce summary recommendations pertaining to target audience, learning objectives and resources to be developed.
 
 # Summary of Recommendations
 
-Text to go here
+A summary of recommendations is provided for the training materials as follows:
+
+[Target audience]{.underline}
+
+-   QPS front line/general duties officers
+
+-   QAS front line staff across the organisation
+
+-   Qld Health co-responders, MH call attendants, Acute Care Teams and Mental Health Intervention Coordinators
+
+[Learning objectives]{.underline}
+
+Themes around which learning objectives will be refined are:
+
+1.  Person-centred approaches to suicide crisis situations: responding to people on worst day of their life
+
+2.  Building connection, rapport and trust with veterans
+
+3.  Demystifying veterans' crisis and alleviating responders bias and fear
+
+4.  Understanding the military experience and language; understanding what it means to identity/loss of identity
+
+5.  Referral pathways and support services
+
+6.  Promoting help seeking behaviours post-crisis
+
+[Video resources]{.underline}
+
+1.  Understanding veterans experience in crisis (lived experience video)
+
+2.  Working with veterans -- trauma informed responses (clinician/expert advice)
+
+3.  The behavioural influence stairway model (skills, QPS, with accompanying text)
+
+4.  Self-management, self-care, and when to seek support (Responder perspectives)
+
+[Text resources]{.underline}
+
+-   Referral pathways and promoting help seeking behaviours (text resources)
 
 # Background
 
 Suicide in veteran communities is a high profile issue of concern in veteran health. The need to improve responses to veterans who experience suicidality, and their families, is being highlighted by the current Royal Commission into Defence and Veteran Suicides.
 
-Suicide crises that result in a call to emergency services (police, paramedics or emergency mental health workers), represent a critical 'touchpoint' between individuals in crisis and health and social care services (WHO, 2009).
+Suicide crises that result in a call to emergency services (police, paramedics or emergency mental health workers), represent a critical 'touchpoint' between individuals in crisis and health and social care services (WHO, 2019^1^).
 
-In spite of this, there is scant evidence or interventions to inform optimal first responses, including first responses tailored to the specific needs of specific populations, including defence and veteran populations.
+In spite of this, there is scant evidence or interventions to inform optimal first responses, including first responses tailored to the specific needs of specific populations, including Defence and veteran populations.
 
 # Project aims
 
-The present project aims to create and evaluate lived experience and evidence-informed video resources, based on qualitative research to be undertaken with veterans who have experienced suicidality, their families, and police and ambulance responders to respond to individuals in crisis. These resources will be available for use by all first responders, and other organisations who provide crisis responses to individuals who are currently serving or veterans.
+The present project aims to create and evaluate lived experience and evidence-informed video and training resources to assist first responders in their responses to veterans, based on qualitative research to be undertaken with veterans who have experienced suicidality, their families, and police and ambulance responders to respond to individuals in crisis. These resources will be available for use by all first responders, and other organisations who provide crisis responses to individuals who are currently serving or veterans.
 
 # Approach
 
-The project is envisaged to comprise three phases: 1. Qualitative interviews and focus groups 2. Video development 3. Evaluation This document outlines the outcomes of phase 2 of this project, pertaining to a one-day co-design workshop to develop video resources and training materials, including process, outcomes, evaluation, and recommendations.
+The project is envisaged to comprise three phases: 1. Qualitative interviews and focus groups 2. Video development and 3. Evaluation. This document outlines the outcomes of phase 2 of this project, pertaining to a one-day co-design workshop, the purpose of which was to develop provisional consensus as to the target audience, learning objectives, and topics of focus of video resources and training materials, based on research undertaken and stakeholder views.
 
 # Workshop
 
@@ -152,11 +214,75 @@ A schema of the proposed video production process, was presented, as follows:
 
 **Training needs and gaps: Preliminary findings from qualitative interviews and focus groups with individuals with lived experience, families, and first responders -- Dr Kerri-Ann Woodbury and Dr Emina Prguda**
 
-TBC from Kerri-Ann and Emina
+In this presentation, Dr Woodbury introduced phase 1 of this project, the qualitative interviews and focus groups with veterans who have been the subject of a suicide-related call to emergency services, their families, and first responders.
 
-### Interactive activities
+Dr Prguda presented the preliminary findings of the research based on six interviews and one focus groups (*n* = 10). See Table 1 for an overview of the key preliminary findings that were covered at the workshop.
 
-Following presentations, workshop participants took part in four focussed interactive activities, with the purpose of progressing towards developing provisional consensus on the following matters:
+**Table 1**
+
+*Phase 1: Preliminary findings*
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| Agreement across participants                                                                                                                                           | Source                     |
++=========================================================================================================================================================================+============================+
+| An understanding, professional, caring, and non-judgmental approach is crucial for emergency service responses, including clear communication and good listening skills | Veterans and family member |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| Veterans may struggle with communication                                                                                                                                | All participant groups     |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| Identify people as ex-serving Defence members earlier on in the process to help guide emergency service responses                                                       | All participant groups     |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| Stigma, shame, and the mentality that veterans need to manage their mental health on their own influences lack of help seeking in the community                         | All participant groups     |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+| Others (e.g., partner) are most likely to call for help                                                                                                                 | All participant groups     |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+
+
+*Update since the workshop*
+
+Since the workshop, researchers have finalised data collection and the qualitative analysis for phase 1 of this project. The final sample consisted of seven veterans, one family member, and nine first responders. The final themes and subthemes are presented in Table 2. These findings will inform the development of the evidence-informed video resources. Once the findings are reviewed and approved for public dissemination, findings will be shared with the workshop participants.  
+
+**Table 2**
+
+*Phase 1: Final thematic analysis*
+
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Theme                                                                     | Subtheme (italicized text) and notes                                                                                                                       |
++===========================================================================+============================================================================================================================================================+
+| Community involvement in veteran suicide prevention                       | Participants spoke of the need for wider community involvement, apart from emergency services                                                              |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Barriers to interactions                                                  | -   *Barriers that are influenced by military culture*                                                                                                     |
+|                                                                           |                                                                                                                                                            |
+|                                                                           | -   Veterans are at high risk of death by suicide                                                                                                          |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Factors that contribute to suicide crises                                 | -   The military-civilian transition and loss of military culture and identity                                                                             |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Veterans' history of mental health support                                | -   Not *receiving vs receiving needed mental health support*                                                                                              |
+|                                                                           |                                                                                                                                                            |
+|                                                                           | -   Challenges with the DVA system and access to healthcare                                                                                                |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Family involvement in suicidality experiences                             | -   Seen as a protective factor                                                                                                                            |
+|                                                                           |                                                                                                                                                            |
+|                                                                           | -   Often the ones reaching out for support for the veteran                                                                                                |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Interactions between veterans and emergency services                      | -   *Veterans' gender and interpretations of interactions*                                                                                                 |
+|                                                                           |                                                                                                                                                            |
+|                                                                           | -   *EEAs and transporting*                                                                                                                                |
+|                                                                           |                                                                                                                                                            |
+|                                                                           | -   *The importance of rapport building and active communication and listening*                                                                            |
+|                                                                           |                                                                                                                                                            |
+|                                                                           | -   First responder characteristics that may influence interactions                                                                                        |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Aggression and violence considerations in responses that involve veterans | Emergency services are on alert when they know they are responding to a veteran, but report that most calls to veterans do not include violence/aggression |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Recommendations for improving responses to suicide-related calls          | -   S*pecific recommendations for working with veterans*                                                                                                   |
+|                                                                           |                                                                                                                                                            |
+|                                                                           | -   Procedural recommendations                                                                                                                             |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                           |                                                                                                                                                            |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+## Interactive activities
+
+Following presentations, workshop participants took part in three focussed interactive activities, with the purpose of progressing towards developing provisional consensus on the following matters:
 
 1.  Who is/are the target audience(s) for these video resources; and
 
@@ -166,7 +292,7 @@ Following presentations, workshop participants took part in four focussed intera
 
 There were two parts to the activities: (1) brainstorming at tables, and (2) a short summative survey based on each table's consensus.
 
-### Filming
+## Filming
 
 In addition to the interactive activities, a film crew was on site for the day to obtain responses from meeting attendees for potential use in video resources. Respondents were invited to respond to the following questions:
 
@@ -176,23 +302,25 @@ In addition to the interactive activities, a film crew was on site for the day t
 
 -   What's one implementable suggestion you could give to a 1^st^ responder on how to respond to veterans' in crisis?
 
-### Evaluation
+## Evaluation
 
 At the end of the day, there was a preliminary discussion regarding an evaluation protocol for the project. A short survey from the day was circulated for participant feedback.
 
 ## Outcomes and provisional consensus
 
-[Response rate]{.underline}
+::: panel-tabset
+#### Response rate
 
 ```{r}
-response_tbl = tibble(activity = c("One","Three","Evaluaton"),
+response_tbl = tibble(activity = c("One","Workshop Questions","Evaluaton"),
        survey_response = c(n_distinct(target_aud$id),n_distinct(pstyle$id),n_distinct(eval$id)),
        all_attendance = 22) %>% 
   group_by(activity) %>% 
   mutate(perc = survey_response/all_attendance,
          stat = paste0(scales::percent(perc,accuracy = .1)," (","n = ",survey_response,")")) %>% 
   select(activity,stat) %>% 
-  reactable(.,
+  filter(!activity %in% "One") |> 
+  reactable(
             highlight = T,bordered = T,pageSizeOptions = c(10,15,20),wrap = T,resizable = T,
             showPageSizeOptions = T,paginationType = "jump",
             columns = list(
@@ -201,8 +329,7 @@ response_tbl = tibble(activity = c("One","Three","Evaluaton"),
 
 response_tbl
 ```
-
-### Target Audience + Learning Objective for video resources
+:::
 
 ::: panel-tabset
 #### Target audience
@@ -218,7 +345,7 @@ target_tbl = target_aud %>%
   
   
 reactable(target_tbl,
-          resizable = T,highlight = T,showSortable = T,showSortIcon = T,bordered = T,
+          resizable = T,highlight = T,showSortable = T,showSortIcon = T,bordered = T,defaultPageSize = 11,
             columns = list(qst_plot = colDef(name = "Target Audiences"),
                            n = colDef(name = "Number of respodents"),
                            perc = colDef(name = "% of respondents",
@@ -253,10 +380,8 @@ reactable(learning_tbl,resizable = T,highlight = T,showSortable = T,showSortIcon
 ```
 :::
 
-### Video topic + Package style for videos
-
 ::: panel-tabset
-#### Topics of videos
+#### Video (resources) topics
 
 ```{r}
 vtopic_tbl = vtopic %>% 
@@ -270,7 +395,7 @@ reactable(vtopic_tbl,resizable = T,highlight = T,showSortable = T,showSortIcon =
                                          cell = data_bars(vtopic_tbl,
                                                           number_fmt = scales::percent,
                                                           min_value = -0.08,
-                                                          fill_color = "#CD5555",
+                                                          fill_color = c("#CDC673"),
                                                           round_edges = T))
                            ))
 
@@ -300,17 +425,17 @@ reactable(style_tbl,resizable = T,highlight = T,showSortable = T,showSortIcon = 
 ```
 :::
 
-### Synthesis of Outcomes
+# Synthesis of Workshop Outcomes
 
 As a means to refine the scope, answers regarding target audience, learning objectives and video topics were synthesized to identify areas of consistency and misalignment.
 
-[Target audience]{.underline}
+## Target audience
 
-With regards to target audience, the vast majority of attendees endorsed the idea that the target audience for training should be QPS front line/general duties officers and QAS front line staff across the whole of organisation. The needs of these target audiences appeared to align with consensus around learning objectives and video topics. The next most endorsed category were QAS Emergency Medical Dispatchers, however, the prescriptive nature of this group\'s role, and according needs, did not appear to align with the learning objectives or topics as relevant to other groups.
+With regards to target audience, the vast majority of attendees endorsed the idea that the target audience for training should be QPS front line/general duties officers and QAS front line staff across the whole of organisation. The needs of these target audiences appeared to align with consensus around learning objectives and video topics. The next most endorsed category were QAS Emergency Medical Dispatchers, however, the prescriptive nature of this group's role, and according needs, did not appear to align with the learning objectives or topics as relevant to other groups.
 
-Queensland Health co-responders, MH call attendants, Acute Care Teams and Mental Health Intervention Coordinators, were considered to have similar needs and therefore could be grouped together as the equivalent Queensland Health \'frontline staff\'.
+Queensland Health co-responders, MH call attendants, Acute Care Teams and Mental Health Intervention Coordinators, were considered to have similar needs and therefore could be grouped together as the equivalent Queensland Health 'frontline staff'.
 
-Other organisations, such as ADF and QFS, maybe secondary beneficiaries of resources but, based on previous learnings, expanding the target audience across too many organisations risks resources not effectively targeting any.
+Other organisations, such as Australian Defence Force (ADF) and Queensland Fire Service (QFS), maybe secondary beneficiaries of resources but, based on previous learnings, expanding the target audience across too many organisations risks resources not effectively targeting any.
 
 Consequently, a provisional recommendation for target audience was identified as follows:
 
@@ -320,22 +445,22 @@ Consequently, a provisional recommendation for target audience was identified as
 
 -   Qld Health co-responders, MH call attendants, Acute Care Teams and Mental Health Intervention Coordinators
 
-[Learning objectives and video (resource) topics]{.underline}
+## Learning objectives and video (resource) topics
 
-Provisional consensus was achieved regarding seven learning objectives. These were assessed in relation to the ten video topics identified, which also achieved high levels of consensus.
+Provisional consensus was achieved regarding seven thematic areas for learning objectives to be based upon. These were assessed in relation to the ten video topics identified, which also achieved high levels of consensus.
 
 Mapping learning objectives to topics suggested, identified areas of alignment which allowed for further refinement. The table below identifies the seven learning objectives identified, and maps them to a synthesized and refined list of video topics. In this process, one learning objective was excluded, due to its not having an alignment with video topics identified. As can be seen, learning objectives map to parts of multiple video topics.
 
 +------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
 | Learning objectives                                                                                              | Video (resource) topics                                                                              |
 +==================================================================================================================+======================================================================================================+
-| -   Person centred approaches to suicide crisis situations, responding to people on worst day of their life      | -   Understanding the veteran\'s experience in crisis                                                |
+| -   Person centred approaches to suicide crisis situations, responding to people on worst day of their life      | -   Understanding the veteran's experience in crisis                                                 |
 |                                                                                                                  |                                                                                                      |
 |                                                                                                                  | -   Working with veterans -- trauma informed responses                                               |
 +------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
 | -   Building connection, rapport and trust with veterans                                                         | -   Communication + rapport building                                                                 |
 +------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
-| -   Demystifying veterans\' crisis and alleviating responders bias and fear                                      | -   Understanding the veteran\'s experience in crisis                                                |
+| -   Demystifying veterans' crisis and alleviating responders bias and fear                                       | -   Understanding the veteran's experience in crisis                                                 |
 |                                                                                                                  |                                                                                                      |
 |                                                                                                                  | -   Working with veterans -- trauma informed responses                                               |
 |                                                                                                                  |                                                                                                      |
@@ -343,7 +468,7 @@ Mapping learning objectives to topics suggested, identified areas of alignment w
 +------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
 | -   Understanding the military experience and language; understanding what it means to identity/loss of identity | -   Working with veterans -- trauma informed responses                                               |
 |                                                                                                                  |                                                                                                      |
-|                                                                                                                  | -   Understanding the veteran\'s experience in crisis                                                |
+|                                                                                                                  | -   Understanding the veteran's experience in crisis                                                 |
 |                                                                                                                  |                                                                                                      |
 |                                                                                                                  | -   Communication + rapport building                                                                 |
 +------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
@@ -354,30 +479,60 @@ Mapping learning objectives to topics suggested, identified areas of alignment w
 | -   Promoting help seeking behaviours post crisis                                                                | -   Education module on resources available                                                          |
 +------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
 
-#### Recommendation for resources
+Communication and rapport building are specific components of the Behavioural Influence Stairway Model (BISM^2^), used by police negotiators. Elements of the BISM model were discussed both at roundtables, and referred to in video clips. The BISM model has been developed overtime and has become a widely established approach to crisis response and de-escalation internationally^2^. Consequently, it was recommended that one learning objective focus specifically on outlining the BISM approach.
+
+Consequently, the following themes for learning objectives are recommended. These will be refined in the pre-production phase:
+
+-   Person-centred approaches to suicide crisis situations, responding to people on worst day of their life
+
+-   Building connection, rapport and trust with veterans
+
+-   Demystifying veterans' crisis and alleviating responders bias and fear
+
+-   Understanding the military experience and language; understanding what it means to identity/loss of identity
+
+-   Referral pathways and support services
+
+-   Promoting help seeking behaviours post-crisis
 
 Following the mapping above, the following resources have been identified for production:
 
--   Understanding the veteran\'s experience in crisis (lived experience video)
+-   Understanding the veteran's experience in crisis (lived experience video)
 
--   Working with veterans -- trauma informed responses (clinician/expert advice)
+-   Working with veterans -- trauma informed responses (clinician/expert advice video)
 
--   Communication + rapport building (skills, potentially by QPS)
+-   The behavioural influence stairway model (skills, QPS, video with accompanying text)
 
--   Self-management, self-care, and when to seek support (Responder perspectives)
+-   Self-management, self-care, and when to seek support (Responder perspectives, video)
 
 -   Referral pathways and promoting help seeking behaviours (text resources)
 
-## Proposed Consultation and Timeline
+# Proposed Consultation and Timeline
 
-Text to go here
+**Pre-production**
 
-# Appendix - Workshop Evaluation
+-   Circulation of workshop report to all attendees (July, 2023)
+
+-   Project investigators and multimedia team to prepare a proposal for the format/type for each video/topic (July-August, 2023)
+
+-   Consultation period with stakeholders, and approval by Queensland Health, Queensland Police Service, and Queensland Ambulance Service of concept developed with multimedia team (September, 2023)
+
+**Production**
+
+-   TBC - October-November, 2023
+
+**Post-production**
+
+-   November-December, 2023
+
+# Appendix
+
+## Workshop Evaluation
 
 ::: panel-tabset
-## Rating the effectiveness of the workshop
+## Effectiveness of the workshop
 
-```{r fig.width=12,fig.asp = 0.8}
+```{r}
 evalrting_tbl = eval %>% 
   filter(col_name %in% paste("q",c(1,2,3,7),sep = "")) %>% 
   group_by(col_description) %>% 
@@ -399,8 +554,8 @@ evalrting_tbl = eval %>%
   ungroup() |> 
   select(col_description,col_response,perc) |> 
   pivot_wider(names_from = col_response,values_from = perc) |> 
-  select(col_description,"Strongly disagree","Somewhat disagree",
-                                                "Neither agree nor disagree","Somewhat agree","Strongly agree")
+  select(col_description,"Strongly agree","Somewhat agree",
+         "Neither agree nor disagree","Somewhat disagree","Strongly disagree")
   
   
   
@@ -410,24 +565,23 @@ reactable(evalrting_tbl,
             columns = list(col_description = colDef(name = "Question"),
                            `Strongly disagree` = colDef(name = "Strongly disagree %",
                                                         cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
-                                                                         min_value = -0.02,round_edges = T,
+                                                                         round_edges = T,text_position = "above",max_value = .9,
                                                                          fill_color = "#EE3B3B")),
                            `Somewhat disagree`= colDef(name = "Somewhat disagree %",
                                                        cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
-                                                                        round_edges = T,
+                                                                        round_edges = T,text_position = "above",max_value = .9,
                                                                         fill_color = "#EEB4B4")),
                            `Neither agree nor disagree`= colDef(name = "Neither agree nor disagree %",
                                                                 cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
-                                                                                 round_edges = T,
-                                                                                 min_value = -0.02,
-                                                                                 fill_color = "#F5DEB3")),
+                                                                                round_edges = T,text_position = "above",max_value = .9,
+                                                                                 fill_color = "#66CDAA")),
                            `Somewhat agree`= colDef(name = "Somewhat agree %",
                                                     cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
-                                                                     round_edges = T,
+                                                                     round_edges = T,text_position = "above",max_value = .9,
                                                                      fill_color = "#00BFFF")),
                            `Strongly agree`= colDef(name = "Strongly agree %",
                                                     cell = data_bars(evalrting_tbl,number_fmt = scales::percent,
-                                                                     round_edges = T,
+                                                                      round_edges = T,text_position = "above",max_value = .9,
                                                                      fill_color = "#00688B"))))
 ```
 
@@ -440,6 +594,10 @@ process_tbl = eval %>%
                           str_detect(col_description,"worst") ~ "Worst",
                           str_detect(col_description,"change") ~ "Change")) %>% 
   select(type,col_response) %>% 
+  # Remove duplicates in the responses
+  group_by(type) |> 
+  distinct(col_response,.keep_all = T) |> 
+  ungroup() %>%
   reactable(.,filterable = T,
             highlight = T,bordered = T,pageSizeOptions = c(10,15,20),
             showPageSizeOptions = T,paginationType = "jump",
@@ -450,7 +608,7 @@ process_tbl = eval %>%
           # Set to undefined to clear the filter
           onchange = sprintf("Reactable.setFilter('cars-select', '%s', event.target.value || undefined)", name),
           # "All" has an empty value to clear the filter, and is the default option
-          tags$option(value = "", "All"),
+          tags$option(value = "","All"),
           lapply(unique(values), tags$option),
           "aria-label" = sprintf("Filter %s", name),
           style = "width: 100%; height: 28px;"
@@ -461,6 +619,8 @@ process_tbl = eval %>%
               ),
     elementId = "cars-select"
             )
+
+
 
 process_tbl
 ```
@@ -480,3 +640,9 @@ cmt_tbl = eval %>%
 cmt_tbl
 ```
 :::
+
+## References
+
+^1^ World Health Organization. (2019). *Suicide in the world: global health estimates* (No. WHO/MSD/MER/19.3). World Health Organization.
+
+^2^ Vecchi, G. M., Wong, G. K., Wong, P. W., & Markey, M. A. (2019). Negotiating in the skies of Hong Kong: The efficacy of the Behavioral Influence Stairway Model (BISM) in suicidal crisis situations. *Aggression and violent behavior*, *48*, 230-239.
